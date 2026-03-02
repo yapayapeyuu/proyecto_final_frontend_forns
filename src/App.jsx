@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router';
 import React, { useState, useEffect } from 'react';
 import { ChatProvider, useChat } from './context/ChatContext.jsx';
-import LoginScreen from './Screens/LoginScreen/LoginScreen.jsx';
+import LoginScreen from './screens/LoginScreen/LoginScreen.jsx';
 import ChatScreen from './screens/ChatScreen/ChatScreen.jsx';
 import './styles/App.css';
 
