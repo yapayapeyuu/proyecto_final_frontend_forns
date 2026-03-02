@@ -1,0 +1,146 @@
+.sidebar {
+    width: 100%;
+    height: 100%;
+    background: var(--wa-border);
+    border-right: 2px solid rgb(85, 69, 69);
+    display: flex;
+    flex-direction: column;
+}
+
+
+.sidebar-header {
+    height: 80px;
+    background-color: #f0f2f5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    border-bottom: 1px solid rgba(232, 22, 22, 0.1);
+    flex-shrink: 0;
+}
+
+.user-avatar-container, 
+.avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 4px solid #00a884;
+    background-color: var(--text-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    flex-shrink: 0;
+    
+}
+
+.foto-user {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-avatar-container span {
+    font-size: 1.5rem;
+    color: violet;
+}
+
+.user-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-left: 20px;
+    white-space: nowrap;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-list {
+    overflow-y: auto;
+    flex: 1;
+}
+
+.contact-link {
+    display: flex;
+    padding: 10px;
+    gap: 15px;
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid rgb(187, 185, 185);
+    margin-left: 20px;
+}
+
+
+.contact-link:hover {
+    background: #f5f6f6;
+}
+
+
+/* =========================================
+    4. CONTACT LIST PAGE
+   ========================================= */
+
+.contact-list-page {
+    padding: 10px 40px 40px;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--wa-bg);
+    overflow-y: auto;
+}
+
+.contacts-grid {
+    display: grid;
+    gap: 25px;
+    margin-top: 20px;
+    grid-template-columns: 1fr;
+}
+
+.contact-card {
+    background: var(--text-dark);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow:  6px rgba(0, 0, 0, 0.05);
+}
+
+.avatar-large {
+    width: 150px;
+    height: 50px;
+    border-radius: 50%;
+    border: 4px solid violet;
+    margin-bottom: 10px;
+}
+
+.sport-tag {
+    color: violet;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.contact-details {
+    text-align: left;
+    font-size: 0.85rem;
+    margin: 15px 0;
+    color: #555;
+}
+
+.chat-button {
+    display: block;
+    background: var(--wa-green);
+    color: var(--white);
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.app-container {
+    height: 100vh;
+    max-width: 2000px;
+    margin: 0 auto;
+    display: flex;
+    overflow: hidden;
+}

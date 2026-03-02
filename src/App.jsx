@@ -1,35 +1,66 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router';
+import React, { useState, useEffect } from 'react';
+import { ChatProvider, useChat } from './context/ChatContext.jsx';
+import LoginScreen from './Screens/LoginScreen/LoginScreen.jsx';
+import ChatScreen from './screens/ChatScreen/ChatScreen.jsx';
+import './styles/App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+
+// Para los estados de whatsapp
+const StatusOverlay = () => {
+  const { activeStatus, closeStatus } = useChat();
+
+  if (!activeStatus) return null;
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="status-overlay" onClick={closeStatus}>
+      <div className="status-container" onClick={(e) => e.stopPropagation()}>
+        <button className="close-status-btn" onClick={closeStatus}>×</button>
+        <video
+          src={activeStatus}
+          autoPlay
+          onEnded={closeStatus}
+          className="status-video"
+        />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+    </div>
+  );
+};
+
+function App() {
+
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    const savedUser = localStorage.getItem('cracks_user');
+    return savedUser && savedUser !== 'Usuario';
+  });
+
+  useEffect(() => {
+    const checkAuth = () => {
+      const savedUser = localStorage.getItem('cracks_user');
+      setIsAuthenticated(savedUser && savedUser !== 'Usuario');
+    };
+
+    window.addEventListener('storage', checkAuth);
+    checkAuth();
+
+    return () => window.removeEventListener('storage', checkAuth);
+  }, []);
+
+  return (
+  <Router>
+    <ChatProvider> 
+      <div className="app-container">
+       <Routes>
+          <Route path="/login" element={<LoginScreen onLogin={() => setIsAuthenticated(true)} />} />
+          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/chat/:PhoneNumber" element={isAuthenticated ? <ChatScreen /> : <Navigate to="/login" />} />
+        </Routes>
+        <StatusOverlay /> 
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </ChatProvider>
+  </Router>
+  );
 }
 
-export default App
+export default App;
+
