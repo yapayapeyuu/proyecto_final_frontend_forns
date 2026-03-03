@@ -1,8 +1,16 @@
-.chat-window {
+/* .chat-window {
     flex: 1;
     display: flex;
     flex-direction: column;
     background: rgb(215, 213, 211);
+} */
+.chat-window {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /*background-color: #0b141a;*/
+  background: rgb(215, 213, 211);
+  height: 100vh;
 }
 
 .chat-header {
@@ -182,9 +190,7 @@
     background-color:  rgb(215, 228, 201);
 }
 
-/* =========================================
-    9. FORM
-   ========================================= */
+/* FORM */
 
 .chat-input-form {
     padding: 20px;

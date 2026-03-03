@@ -356,7 +356,7 @@ export default function ContactList() {
   );
 } */
 
-  import { memo } from "react";
+ /*  import { memo } from "react";
 import { Link } from "react-router-dom";
 import { useContacts } from "../../context/ContactsContext";
 import "../../styles/contactList.css";
@@ -406,6 +406,115 @@ function ContactList() {
 
       </div>
 
+    </div>
+  );
+}
+
+export default memo(ContactList); */
+
+/* import { memo } from "react";
+import { Link } from "react-router-dom";
+
+import contactsData from "../../data/contactsData";
+import { useChat } from "../../context/ChatContext";
+
+import "../../styles/contactList.css";
+
+function ContactList() {
+
+  // contexto global del chat
+  const { setActiveChat } = useChat();
+
+  return (
+    <div className="contacts">
+
+    
+      <div className="contacts__header">
+        <h2 className="contacts__title">Chats</h2>
+      </div>
+
+  
+      <div className="contacts__list">
+
+        {contactsData.map((contact) => (
+
+          <Link
+            key={contact.PhoneNumber}
+            to="/chat"
+            className="contacts__item"
+            onClick={() => setActiveChat(contact)}
+          >
+          
+            <img
+              src={contact.avatar}
+              alt={contact.name}
+              className="contacts__avatar"
+            />
+
+        
+            <div className="contacts__info">
+              <span className="contacts__name">
+                {contact.name}
+              </span>
+
+              <span className="contacts__last-msg">
+                {contact.lastMsg}
+              </span>
+            </div>
+
+          </Link>
+
+        ))}
+
+      </div>
+
+    </div>
+  );
+}
+
+export default memo(ContactList); */
+
+import { memo } from "react";
+import contactsData from "../../data/contactsData";
+import { useChat } from "../../context/ChatContext";
+
+import "../../styles/contactList.css";
+
+function ContactList() {
+
+  const { setActiveChat } = useChat();
+
+  return (
+    <div className="contacts">
+
+      <div className="contacts__header">
+        <h2>Chats</h2>
+      </div>
+
+      <div className="contacts__list">
+
+        {contactsData.map(contact => (
+
+          <div
+            key={contact.PhoneNumber}
+            className="contacts__item"
+            onClick={() => setActiveChat(contact)}
+          >
+            <img
+              src={contact.avatar}
+              className="contacts__avatar"
+            />
+
+            <div>
+              <h4>{contact.name}</h4>
+              <p>{contact.lastMsg}</p>
+            </div>
+
+          </div>
+
+        ))}
+
+      </div>
     </div>
   );
 }

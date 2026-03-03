@@ -19,3 +19,55 @@ const ChatScreen = () => {
 
 
 export default ChatScreen; */
+
+/* import IconSidebar from "../components/layout/IconSidebar";
+import ContactList from "../components/layout/ContactList";
+import ChatWindow from "../components/chat/ChatWindow";
+import EmptyChat from "../components/chat/EmptyChat";
+
+import { useChat } from "../context/ChatContext";
+
+export default function ChatScreen() {
+
+  const { activeChat } = useChat();
+
+  return (
+    <div className="chat-layout">
+
+      <IconSidebar />
+
+      <ContactList />
+
+      {activeChat ? (
+        <ChatWindow />
+      ) : (
+        <EmptyChat />
+      )}
+
+    </div>
+  );
+} */
+
+  import IconSidebar from "../components/sidebar/IconSidebar";
+import ContactList from "../components/contacts/ContactList";
+import ChatWindow from "../components/chat/ChatWindow";
+
+import "../styles/chatScreen.css";
+
+export default function ChatScreen() {
+  return (
+    <div className="chat-screen">
+
+      {/* Sidebar izquierda */}
+      <IconSidebar />
+
+      {/* Lista de contactos */}
+      <ContactList />
+
+      {/* Área del chat */}
+      <ChatWindow />
+
+    </div>
+  );
+}
+

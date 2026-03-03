@@ -384,7 +384,7 @@ const phone = searchParams.get("contact");
 
 
  */
-
+/* 
 import { useSearchParams } from "react-router-dom";
 import { useChat } from "../../context/ChatContext";
 import "../../styles/chat.css";
@@ -415,4 +415,111 @@ export default function ChatWindow() {
 
     </div>
   );
+} */
+
+/*   import { useChat } from "../../context/ChatContext";
+import EmptyChat from "./EmptyChat";
+import ChatInput from "./ChatInput";
+import "../../styles/chat.css";
+
+export default function ChatWindow() {
+
+  // 🔥 contexto global
+  const { activeChat, messages } = useChat();
+
+  // 👉 si NO hay chat seleccionado
+  if (!activeChat) {
+    return <EmptyChat />;
+  }
+
+  // mensajes del contacto activo
+  const chatMessages =
+    messages[activeChat.PhoneNumber] || [];
+
+  return (
+    <div className="chat-window">
+
+      <header className="chat-header">
+
+        <img
+          src={activeChat.avatar}
+          alt={activeChat.name}
+          className="chat-header__avatar"
+        />
+
+        <div className="chat-header__info">
+          <h3>{activeChat.name}</h3>
+          <span>En línea</span>
+        </div>
+
+      </header>
+
+      <main className="message-area">
+
+        {chatMessages.length === 0 ? (
+          <p className="chat-empty-msg">
+            No hay mensajes todavía
+          </p>
+        ) : (
+          chatMessages.map((msg) => (
+            <div
+              key={msg.id}
+              className={`msg-bubble ${
+                msg.author === "me"
+                  ? "me"
+                  : "them"
+              }`}
+            >
+              <p>{msg.text}</p>
+
+              <span className="msg-time">
+                {msg.time}
+              </span>
+            </div>
+          ))
+        )}
+
+      </main>
+
+  
+      <ChatInput />
+
+    </div>
+  );
+} */
+
+  import { useChat } from "../../context/ChatContext";
+
+import ChatHeader from "../layout/ChatWindow/ChatHeader";
+import ChatMessages from "../layout/ChatWindow/ChatMessages";
+import ChatInput from "../layout/ChatWindow/ChatInput";
+import EmptyChat from "./EmptyChat"; 
+/* import ChatHeader from "./ChatHeader";
+import ChatMessages from "./ChatMessages";
+import ChatInput from "./ChatInput";
+import EmptyChat from "./EmptyChat"; */
+import "../../styles/chat.css";
+
+export default function ChatWindow() {
+
+  const { activeChat } = useChat();
+
+  /* 👉 Si no hay chat seleccionado */
+  if (!activeChat) {
+    return <EmptyChat />;
+  }
+
+  /* 👉 Chat abierto */
+  return (
+    <div className="chat-window">
+
+      <ChatHeader contact={activeChat} />
+
+      <ChatMessages contact={activeChat} />
+
+      <ChatInput contact={activeChat} />
+
+    </div>
+  );
 }
+

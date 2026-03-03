@@ -41,7 +41,7 @@ export default function ChatLayout() {
   );
 } */
 
-import ContactList from "../../components/Layout/ContactList";
+/* import ContactList from "../../components/Layout/ContactList";
 import IconSidebar from "../../components/Layout/IconSidebar";
 import { Outlet } from "react-router";
 import "../../styles/layout.css"
@@ -57,6 +57,22 @@ export default function ChatLayout() {
 
       <Outlet />
 
+    </div>
+  );
+} */
+
+  import IconSidebar from "../../components/layout/IconSidebar";
+import ContactList from "../../components/layout/ContactList";
+import ChatWindow from "../../components/chat/ChatWindow";
+
+import "../../styles/layout.css";
+
+export default function ChatLayout() {
+  return (
+    <div className="chat-layout">
+      <IconSidebar />
+      <ContactList />
+      <ChatWindow />
     </div>
   );
 }

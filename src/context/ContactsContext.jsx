@@ -47,7 +47,7 @@ const ContactsContext = createContext();
 
 export const ContactsProvider = ({ children }) => {
 
-  // 👇 usamos SERVICE (NO data directa)
+  // SERVICE (NO data directa)
   const [contacts, setContacts] = useState(getContacts());
 
   const value = {
@@ -73,7 +73,7 @@ export const ChatProvider = ({ children }) => {
   const [activeChat, setActiveChat] = useState(null);
   const [messages, setMessages] = useState({});
 
-  // 👇 usuario guardado en login
+  // usuario guardado en login
   const [userName, setUserName] = useState(
     localStorage.getItem("chat_user") || ""
   );
@@ -103,8 +103,6 @@ export const ChatProvider = ({ children }) => {
     }));
   };
 
-
-   // 🔥 BUG INVISIBLE FIX (SAFE)
    
   const value = useMemo(() => ({
     activeChat,
@@ -141,7 +139,7 @@ export const ChatProvider = ({ children }) => {
   const [activeChat, setActiveChat] = useState(null);
   const [messages, setMessages] = useState({});
 
-  // 👇 usuario guardado en login
+  // usuario guardado en login
   const [userName, setUserName] = useState(
     localStorage.getItem("chat_user") || ""
   );
@@ -192,12 +190,73 @@ export const ChatProvider = ({ children }) => {
 };
 
 export const useChat = () => useContext(ChatContext); */
-import { createContext, useContext, useState } from "react";
+/* import { createContext, useContext, useState } from "react";
 import contactsData from "../data/contactsData";
 
 const ContactsContext = createContext();
 
 export const ContactsContextProvider = ({ children }) => {
+
+  const [contacts, setContacts] = useState(contactsData);
+
+  return (
+    <ContactsContext.Provider value={{ contacts, setContacts }}>
+      {children}
+    </ContactsContext.Provider>
+  );
+};
+
+export const useContacts = () => useContext(ContactsContext); */
+/* 
+import { createContext, useContext, useState } from "react";
+
+const ChatContext = createContext();
+
+export const ChatProvider = ({ children }) => {
+
+  // usuario logueado
+  const [userName, setUserName] = useState(
+    localStorage.getItem("chat_user") || ""
+  );
+
+  // chat seleccionado
+  const [activeChat, setActiveChat] = useState(null);
+
+  // mensajes por contacto
+  const [messages, setMessages] = useState({});
+
+  // logout limpio
+  const logout = () => {
+    setUserName("");
+    setActiveChat(null);
+    localStorage.removeItem("chat_user");
+  };
+
+  return (
+    <ChatContext.Provider
+      value={{
+        userName,
+        setUserName,
+        activeChat,
+        setActiveChat,
+        messages,
+        setMessages,
+        logout
+      }}
+    >
+      {children}
+    </ChatContext.Provider>
+  );
+};
+
+export const useChat = () => useContext(ChatContext); */
+
+import { createContext, useContext, useState } from "react";
+import contactsData from "../data/contactsData";
+
+const ContactsContext = createContext();
+
+export const ContactsProvider = ({ children }) => {
 
   const [contacts, setContacts] = useState(contactsData);
 

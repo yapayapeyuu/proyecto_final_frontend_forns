@@ -110,7 +110,7 @@ createRoot(document.getElementById("root")).render(
     </ContactsContextProvider>
   </BrowserRouter>
 ); */
-
+/* 
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 
@@ -126,6 +126,81 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <ContactsContextProvider>
         <App />
       </ContactsContextProvider>
+    </ChatProvider>
+  </BrowserRouter>
+); */
+
+/* import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+
+import { BrowserRouter } from "react-router-dom";
+
+import { ChatProvider } from "./context/ChatContext";
+import { ContactsProvider } from "./context/ContactsContext";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+
+  <BrowserRouter>
+    <ChatProvider>
+      <ContactsProvider>
+        <App />
+      </ContactsProvider>
+    </ChatProvider>
+  </BrowserRouter>
+
+); */
+
+/* import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+
+import { BrowserRouter } from "react-router-dom";
+
+import { ChatProvider } from "./context/ChatContext";
+import "./styles/global.css";
+
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+
+  <BrowserRouter>
+    <ChatProvider>
+      
+        <App />
+      
+    </ChatProvider>
+  </BrowserRouter>
+
+); */
+/* 
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+
+import { BrowserRouter } from "react-router-dom";
+import { ChatProvider } from "./context/ChatContext";
+import { ContactsProvider } from "./context/ContactsContext";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <BrowserRouter>
+    <ChatProvider>
+      <ContactsProvider>
+        <App />
+      </ContactsProvider>
+    </ChatProvider>
+  </BrowserRouter>
+); */
+
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "./styles/global.css";
+import { BrowserRouter } from "react-router-dom";
+import { ChatProvider } from "./context/ChatContext";
+import { ContactsProvider } from "./context/ContactsContext";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <BrowserRouter>
+    <ChatProvider>
+      <ContactsProvider>
+        <App />
+      </ContactsProvider>
     </ChatProvider>
   </BrowserRouter>
 );

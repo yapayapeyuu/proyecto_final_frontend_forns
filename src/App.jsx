@@ -135,7 +135,7 @@ function App() {
 
 export default App; */
 
-import { Routes, Route } from "react-router-dom";
+/* import { Routes, Route } from "react-router-dom";
 
 //import LoginScreen from "./screens/LoginScreen";
 import LoginScreen from "./screens/LoginScreen/LoginScreen";
@@ -161,4 +161,23 @@ export default function App() {
 
     </Routes>
   );
+} */
+
+  import { Routes, Route } from "react-router-dom";
+
+import LoginScreen from "./screens/LoginScreen/LoginScreen";
+import ChatLayout from "./screens/ChatLayout/ChatLayout";
+
+function App() {
+  return (
+    <Routes>
+
+      <Route path="/" element={<LoginScreen />} />
+
+      <Route path="/chat/*" element={<ChatLayout />} />
+
+    </Routes>
+  );
 }
+
+export default App;
