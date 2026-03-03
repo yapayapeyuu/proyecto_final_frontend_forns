@@ -61,7 +61,7 @@ export default function ChatLayout() {
   );
 } */
 
-  import IconSidebar from "../../components/layout/IconSidebar";
+import IconSidebar from "../../components/layout/IconSidebar";
 import ContactList from "../../components/layout/ContactList";
 import ChatWindow from "../../components/chat/ChatWindow";
 
@@ -73,6 +73,7 @@ export default function ChatLayout() {
       <IconSidebar />
       <ContactList />
       <ChatWindow />
+      
     </div>
   );
 }

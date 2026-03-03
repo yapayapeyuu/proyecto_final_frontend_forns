@@ -424,10 +424,10 @@ import "../../styles/chat.css";
 
 export default function ChatWindow() {
 
-  // 🔥 contexto global
+
   const { activeChat, messages } = useChat();
 
-  // 👉 si NO hay chat seleccionado
+  
   if (!activeChat) {
     return <EmptyChat />;
   }
@@ -504,12 +504,12 @@ export default function ChatWindow() {
 
   const { activeChat } = useChat();
 
-  /* 👉 Si no hay chat seleccionado */
+  /* Si no hay chat seleccionado */
   if (!activeChat) {
     return <EmptyChat />;
   }
 
-  /* 👉 Chat abierto */
+  /* Chat abierto */
   return (
     <div className="chat-window">
 
