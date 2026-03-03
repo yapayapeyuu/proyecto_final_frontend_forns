@@ -98,7 +98,7 @@ export default LoginScreen; */
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useChat } from "../../context/ChatContext"; // mantener el contexto
-import "../../styles/loginScreen.css";
+import "../../styles/LoginScreen.css";
 
 function LoginScreen({ onLogin }) {
   const [user, setUser] = useState("");
