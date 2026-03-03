@@ -1,0 +1,37 @@
+.empty-chat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+.empty-chat__title {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.empty-chat__text {
+  margin-bottom: 20px;
+}
+
+.empty-chat__buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.empty-chat__button {
+  padding: 10px 20px;
+  background-color: #00a884;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.empty-chat__button:hover {
+  background-color: #007b5e;
+}

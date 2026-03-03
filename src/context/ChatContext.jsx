@@ -1,50 +1,60 @@
-/* import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 import { formatTime, getBotResponse } from '../utils/constants';
-import { contactsData } from '../data/contactsData.js';
-import { initialMessages } from "../data/initialMessages";
+import { contactsData } from '../data/contacts.Data.jsx';
 import { useNavigate } from "react-router-dom";
 
 const ChatContext = createContext();
 
 export const ChatProvider = ({ children }) => {
 
+    const navigate = useNavigate();
+    const contacts = contactsData;
+
+    const [activeChat, setActiveChat] = useState(null);
 
     const [userName, setUserName] = useState(() => {
-        return localStorage.getItem('cracks_user') || '';
+        return localStorage.getItem('user') || '';
     });
+
+    // ✅ THEME (CORRECTAMENTE DENTRO DEL COMPONENTE)
+    const [theme, setTheme] = useState(() => {
+        return localStorage.getItem('theme') || 'dark';
+    });
+
+    useEffect(() => {
+        document.body.className = theme;
+        localStorage.setItem('theme', theme);
+    }, [theme]);
+
+    const toggleTheme = () => {
+        setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
+    };
 
     const [activeStatus, setActiveStatus] = useState(null);
 
     const openStatus = (videoUrl) => setActiveStatus(videoUrl);
     const closeStatus = () => setActiveStatus(null);
 
-    const navigate = useNavigate();
-    const contacts = contactsData;
-
     const [messages, setMessages] = useState(() => {
-        const saved = localStorage.getItem('cracks_messages');
-        if (saved) return JSON.parse(saved);
-
-        const initialUser = localStorage.getItem('cracks_user') || '';
-        return initialMessages(initialUser);
+        const saved = localStorage.getItem('messages');
+        return saved ? JSON.parse(saved) : {};
     });
 
     const [isTyping, setIsTyping] = useState(null);
 
-
     useEffect(() => {
         if (userName) {
-            localStorage.setItem('cracks_user', userName);
+            localStorage.setItem('user', userName);
         }
     }, [userName]);
 
     useEffect(() => {
-        localStorage.setItem('cracks_messages', JSON.stringify(messages));
+        localStorage.setItem('messages', JSON.stringify(messages));
     }, [messages]);
 
     const logout = () => {
-        localStorage.removeItem('cracks_user');
-        localStorage.removeItem('cracks_messages');
+        localStorage.removeItem('user');
+        localStorage.removeItem('messages');
         setUserName('');
         navigate("/login");
     };
@@ -66,7 +76,6 @@ export const ChatProvider = ({ children }) => {
             [contactId]: [...(prev[contactId] || []), newMessage]
         }));
 
- 
         setIsTyping(contactId);
 
         setTimeout(() => {
@@ -116,496 +125,15 @@ export const ChatProvider = ({ children }) => {
             logout,
             openStatus,
             closeStatus,
-            activeStatus
+            activeStatus,
+            activeChat,
+            setActiveChat,
+            theme,
+            toggleTheme
         }}>
             {children}
         </ChatContext.Provider>
     );
-};
-
-export const useChat = () => useContext(ChatContext); */
-/* 
-import { createContext, useContext, useState } from "react";
-import { getContacts } from "../services/service";
-
-
-const ChatContext = createContext();
-
-export const ChatProvider = ({ children }) => {
-
-  const contacts = getContacts();
-
-  const [messages, setMessages] = useState({});
-
-  const [activeChat, setActiveChat] = useState(null);
-
-  const userName = "Yo";
-
-  const sendMessage = (phone, text) => {
-
-    const newMessage = {
-      id: Date.now(),
-      author: userName,
-      text,
-      time: new Date().toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit"
-      }),
-      status: "sent"
-    };
-
-    setMessages(prev => ({
-      ...prev,
-      [phone]: [...(prev[phone] || []), newMessage]
-    }));
-  };
-
-  const openStatus = (video) => {
-    console.log("abrir status", video);
-  };
-
-  return (
-    <ChatContext.Provider
-      value={{
-        contacts,
-        messages,
-        sendMessage,
-        userName,
-        activeChat,
-        setActiveChat,
-        openStatus
-      }}
-    >
-      {children}
-    </ChatContext.Provider>
-  );
-};
-
-export const useChat = () => useContext(ChatContext); */
-
-/* import { createContext, useContext, useState } from "react";
-import { getContacts } from "../services/services";
-//import { getContacts } from "../services/services";
-
-const ChatContext = createContext();
-
-export function ChatProvider({ children }) {
-
-  const contacts = getContacts();
-
-  const [messages, setMessages] = useState({});
-
-  const sendMessage = (phone, text) => {
-
-    const newMessage = {
-      id: Date.now(),
-      author: "Yo",
-      text,
-      time: new Date().toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit"
-      }),
-      status: "sent"
-    };
-
-    setMessages(prev => ({
-      ...prev,
-      [phone]: [...(prev[phone] || []), newMessage]
-    }));
-  };
-
-  return (
-    <ChatContext.Provider
-      value={{
-        contacts,
-        messages,
-        sendMessage
-      }}
-    >
-      {children}
-    </ChatContext.Provider>
-  );
-}
-
-export const useChat = () => useContext(ChatContext); */
-
-/* import { createContext, useContext, useState } from "react";
-
-const ChatContext = createContext();
-
-export const useChat = () => useContext(ChatContext);
-
-export default function ChatProvider({ children }) {
-
-  const [messages, setMessages] = useState({});
-
-  const sendMessage = (phone, text) => {
-
-    setMessages(prev => ({
-      ...prev,
-      [phone]: [
-        ...(prev[phone] || []),
-        {
-          id: Date.now(),
-          text,
-          author: "me"
-        }
-      ]
-    }));
-  };
-
-  return (
-    <ChatContext.Provider value={{ messages, sendMessage }}>
-      {children}
-    </ChatContext.Provider>
-  );
-} *//* 
-
-  import { createContext, useContext, useState } from "react";
-
-const ChatContext = createContext();
-
-export const useChat = () => useContext(ChatContext);
-
-export default function ChatProvider({ children }) {
-
-  const [userName, setUserName] = useState(
-    localStorage.getItem("chat_user") || ""
-  );
-
-  const [messages, setMessages] = useState({});
-
-  const sendMessage = (phone, text) => {
-    setMessages(prev => ({
-      ...prev,
-      [phone]: [
-        ...(prev[phone] || []),
-        {
-          id: Date.now(),
-          text,
-          author: userName
-        }
-      ]
-    }));
-  };
-
-  const value = {
-    userName,
-    setUserName, 
-    sendMessage
-  };
-
-  return (
-    <ChatContext.Provider value={value}>
-      {children}
-    </ChatContext.Provider>
-  );
-} */
-
- /*  import { createContext, useContext, useState, useMemo } from "react";
-
-const ChatContext = createContext();
-
-export const ChatProvider = ({ children }) => {
-
-  const [activeChat, setActiveChat] = useState(null);
-  const [messages, setMessages] = useState({});
-
-  const sendMessage = (phone, text) => {
-
-    const newMessage = {
-      id: Date.now(),
-      text,
-      author: "me",
-      time: new Date().toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit"
-      })
-    };
-
-    setMessages(prev => ({
-      ...prev,
-      [phone]: [...(prev[phone] || []), newMessage]
-    }));
-  };
-  const value = useMemo(() => ({
-    activeChat,
-    setActiveChat,
-    messages,
-    sendMessage
-  }), [activeChat, messages]);
-
-  return (
-    <ChatContext.Provider value={value}>
-      {children}
-    </ChatContext.Provider>
-  );
-};
-
-export const useChat = () => useContext(ChatContext); */
-
-/* import { createContext, useContext, useState } from "react";
-
-// Crear contexto
-export const ContactsContext = createContext({
-  contacts: [],
-  favorite_name: ""
-});
-
-// Provider
-const ContactsContextProvider = ({ children }) => {
-  const [contacts, setContacts] = useState([]);
-  const [favorite_name, setFavoriteName] = useState("");
-
-  const value = {
-    contacts,
-    setContacts,
-    favorite_name,
-    setFavoriteName
-  };
-
-  return (
-    <ContactsContext.Provider value={value}>
-      {children}
-    </ContactsContext.Provider>
-  );
-};
-
-// export const useContacts = () => {
-  return useContext(ContactsContext);
-};
-
-export default ContactsContextProvider; */
-
-/* import { createContext, useContext, useState, useMemo } from "react";
-
-/*  CONTEXT *//*
-
-export const ChatContext = createContext();*/
-
-/*    PROVIDER*//*
-
-const ChatProvider = ({ children }) => {
-
-  const [activeChat, setActiveChat] = useState(null);
-  const [messages, setMessages] = useState({});
-
-  // datos de usuario (porque IconSidebar los usa)
-  const [userName, setUserName] = useState("");
-  const [userAvatar, setUserAvatar] = useState(null);
-
-  const logout = () => {
-    setUserName("");
-    setUserAvatar(null);
-    setActiveChat(null);
-  };
-
-  const sendMessage = (phone, text) => {
-
-    const newMessage = {
-      id: Date.now(),
-      text,
-      author: "me",
-      time: new Date().toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit"
-      })
-    };
-
-    setMessages(prev => ({
-      ...prev,
-      [phone]: [...(prev[phone] || []), newMessage]
-    }));
-  };*/
-
-  /*
-  const value = useMemo(() => ({
-    activeChat,
-    setActiveChat,
-    messages,
-    sendMessage,
-    userName,
-    setUserName,
-    userAvatar,
-    setUserAvatar,
-    logout
-  }), [activeChat, messages, userName, userAvatar]);
-
-  return (
-    <ChatContext.Provider value={value}>
-      {children}
-    </ChatContext.Provider>
-  );
-};*/
-
-/* =========================
-   CUSTOM HOOK
-========================= *//*
-
-export const useChat = () => {
-  return useContext(ChatContext);
-};
-
-export default ChatProvider; */
-
-/* import { createContext, useContext, useState, useMemo } from "react";
-
-const ChatContext = createContext();
-
-export const ChatProvider = ({ children }) => {
-
-  const [activeChat, setActiveChat] = useState(null);
-  const [messages, setMessages] = useState({});
-
-  const [userName, setUserName] = useState(
-    localStorage.getItem("chat_user") || ""
-  );
-
-  const [userAvatar, setUserAvatar] = useState(null);
-
-  const logout = () => {
-    localStorage.removeItem("chat_user");
-    setUserName("");
-  };
-
-  const sendMessage = (phone, text) => {
-
-    const newMessage = {
-      id: Date.now(),
-      text,
-      author: userName || "me",
-      time: new Date().toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit"
-      })
-    };
-
-    setMessages(prev => ({
-      ...prev,
-      [phone]: [...(prev[phone] || []), newMessage]
-    }));
-  };
-
-  const value = useMemo(() => ({
-    activeChat,
-    setActiveChat,
-    messages,
-    sendMessage,
-    userName,
-    setUserName,
-    userAvatar,
-    setUserAvatar,
-    logout
-  }), [activeChat, messages, userName, userAvatar]);
-
-  return (
-    <ChatContext.Provider value={value}>
-      {children}
-    </ChatContext.Provider>
-  );
-};
-
-export const useChat = () => useContext(ChatContext); */
-
-/* import { createContext, useContext, useState, useMemo } from "react";
-
-const ChatContext = createContext();
-
-export const ChatProvider = ({ children }) => {
-
-  const [activeChat, setActiveChat] = useState(null);
-  const [messages, setMessages] = useState({});
-
-  const sendMessage = (phone, text) => {
-
-    const newMessage = {
-      id: Date.now(),
-      text,
-      author: "me",
-      time: new Date().toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit"
-      })
-    };
-
-    setMessages(prev => ({
-      ...prev,
-      [phone]: [...(prev[phone] || []), newMessage]
-    }));
-  };
-
-  const value = useMemo(() => ({
-    activeChat,
-    setActiveChat,
-    messages,
-    sendMessage
-  }), [activeChat, messages]);
-
-  return (
-    <ChatContext.Provider value={value}>
-      {children}
-    </ChatContext.Provider>
-  );
-};
-
-export const useChat = () => useContext(ChatContext); */
-
-/* import { createContext, useContext, useState } from "react";
-import contactsData from "../data/contactsData";
-
-const ContactsContext = createContext();
-
-export const ContactsProvider = ({ children }) => {
-
-  const [contacts, setContacts] = useState(contactsData);
-
-  return (
-    <ContactsContext.Provider value={{ contacts, setContacts }}>
-      {children}
-    </ContactsContext.Provider>
-  );
-};
-
-export const useContacts = () => useContext(ContactsContext); */
-
-import { createContext, useContext, useState } from "react";
-
-const ChatContext = createContext();
-
-export const ChatProvider = ({ children }) => {
-
-  // usuario logueado
-  const [userName, setUserName] = useState(
-    localStorage.getItem("chat_user") || ""
-  );
-
-  // chat seleccionado
-  const [activeChat, setActiveChat] = useState(null);
-
-  // mensajes por contacto
-  const [messages, setMessages] = useState({});
-
-  const logout = () => {
-    localStorage.removeItem("chat_user");
-    setUserName("");
-    setActiveChat(null);
-  };
-
-  return (
-    <ChatContext.Provider
-      value={{
-        userName,
-        setUserName,
-        activeChat,
-        setActiveChat,
-        messages,
-        setMessages,
-        logout
-      }}
-    >
-      {children}
-    </ChatContext.Provider>
-  );
 };
 
 export const useChat = () => useContext(ChatContext);

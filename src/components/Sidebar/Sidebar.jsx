@@ -1,42 +1,78 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useChat } from '../../context/ChatContext';
-import './Sidebar.css'
+import './Sidebar.css';
 import { CiLogout } from "react-icons/ci";
+import { FaCircle } from "react-icons/fa";
+import { FaRegCircle } from "react-icons/fa6";
 
 const Sidebar = () => {
-  const { contacts, userName, logout } = useChat();
+  const { 
+    contacts, 
+    activeChat, 
+    setActiveChat,
+    toggleTheme,
+    theme,
+    logout
+  } = useChat();
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
 
   return (
     <aside className="sidebar">
-      <header className="sidebar-header">
-        <div className="user-avatar-container">
-          <img src="/Imagenes/baghee.jpg" className='foto-user' alt='foto-user'/>
+
+      <div className="sidebar-top">
+        <span className="sidebar-title">WhatsApp</span>
+
+   
+        <div className="sidebar-actions-mobile">
+          <button 
+            className="sidebar-icon-btn"
+            onClick={toggleTheme}
+            title="Cambiar tema"
+          >
+            {theme === 'dark' ? <FaRegCircle /> :  <FaCircle/> }
+          </button>
+
+          <button 
+            className="sidebar-icon-btn logout"
+            onClick={handleLogout}
+            title="Cerrar sesión"
+          ><CiLogout />
+          </button>
         </div>
-        <h2 className="user-name"> {userName}</h2>
-      </header>
+      </div>
 
       <nav className="contact-list">
         {contacts.map((contact) => (
-          <Link key={contact.PhoneNumber} to={`/chat/${contact.PhoneNumber}`} className="contact-link">
-            <img src={contact.avatar} alt={contact.name} className="avatar" />
-            <div>
-              <strong>{contact.name}</strong>
-              <p style={{ margin: 0, fontSize: '0.8rem', color: 'gray' }}>{contact.lastMsg}</p>
+          <Link
+            key={contact.PhoneNumber}
+            to={`/chat/${contact.PhoneNumber}`}
+            className={`contact-link ${
+              activeChat === contact.PhoneNumber ? 'active' : ''
+            }`}
+            onClick={() => setActiveChat(contact.PhoneNumber)}
+          >
+            <div className="contact-content">
+              <img 
+                src={contact.avatar} 
+                alt={contact.name} 
+                className="avatar" 
+              />
+              <div className="contact-text">
+                <strong>{contact.name}</strong>
+                <p>{contact.lastMsg}</p>
+              </div>
             </div>
           </Link>
         ))}
       </nav>
-      <div>
-        <button
-          onClick={() => {
-            logout();
-            navigate('/login');
-            }}
-            className="logout-btn-mobile">
-            <CiLogout />
-        </button>
-      </div>
+
     </aside>
   );
 };
