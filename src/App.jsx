@@ -1,10 +1,10 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router';
+/* import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router';
 import React, { useState, useEffect } from 'react';
 import { ChatProvider, useChat } from './context/ChatContext.jsx';
 import LoginScreen from './screens/LoginScreen/LoginScreen.jsx';
 import ChatScreen from './screens/ChatScreen/ChatScreen.jsx';
 import './styles/App.css';
-
+import ChatLayout from './screens/ChatLayout/ChatLayout.jsx';
 
 // Para los estados de whatsapp
 const StatusOverlay = () => {
@@ -47,7 +47,7 @@ function App() {
   }, []);
 
   return (
-  <Router>
+ /*  <Router>
     <ChatProvider> 
       <div className="app-container">
        <Routes>
@@ -58,9 +58,107 @@ function App() {
         <StatusOverlay /> 
       </div>
     </ChatProvider>
-  </Router>
+  </Router> 
+  <Routes>
+
+  <Route path="/" element={<LoginScreen />} />
+
+  <Route path="/chat" element={<ChatLayout />}>
+
+      <Route index element={<EmptyChat />} />
+
+      <Route path=":PhoneNumber" element={<ChatWindow />} />
+
+  </Route>
+
+</Routes>
   );
 }
 
 export default App;
 
+ */
+
+/* import { Routes, Route } from "react-router";
+
+import LoginScreen from "./screens/LoginScreen/LoginScreen";
+import ChatLayout from "./screens/ChatLayout/ChatLayout";
+import EmptyChat from "./components/Chat/EmptyChat";
+import ChatWindow from "./components/ChatWindow/ChatWindow";
+//import './styles/App.css';
+
+
+function App() {
+  return (
+    <Routes>
+
+      <Route path="/" element={<LoginScreen />} />
+      <Route path="/chat" element={<ChatLayout />}>
+
+        <Route index element={<EmptyChat />} />
+
+        <Route path=":PhoneNumber" element={<ChatWindow />} />
+
+      </Route>
+
+    </Routes>
+  );
+}
+
+export default App; */
+
+/* import { Routes, Route } from "react-router-dom";
+
+import LoginScreen from "./screens/LoginScreen/LoginScreen";
+import ChatLayout from "./screens/ChatLayout/ChatLayout";
+import EmptyChat from "./components/Chat/EmptyChat"
+import ChatWindow from "./components/Chat/ChatWindow";
+
+function App() {
+
+  return (
+    <Routes>
+
+      <Route path="/" element={<LoginScreen />} />
+
+      <Route path="/chat" element={<ChatLayout />}>
+
+        <Route index element={<EmptyChat />} />
+
+        <Route path=":PhoneNumber" element={<ChatWindow />} />
+
+      </Route>
+
+    </Routes>
+  );
+}
+
+export default App; */
+
+import { Routes, Route } from "react-router-dom";
+
+//import LoginScreen from "./screens/LoginScreen";
+import LoginScreen from "./screens/LoginScreen/LoginScreen";
+import ChatLayout from "./screens/ChatLayout/ChatLayout";
+//import ChatLayout from "./screens/ChatLayout";
+import ChatWindow from "./components/Chat/ChatWindow";
+import EmptyChat from "./components/Chat/EmptyChat";
+
+
+export default function App() {
+  return (
+    <Routes>
+
+      <Route path="/" element={<LoginScreen />} />
+
+      <Route path="/chat" element={<ChatLayout />}>
+
+        <Route index element={<EmptyChat />} />
+
+        <Route path="chat" element={<ChatWindow />} />
+
+      </Route>
+
+    </Routes>
+  );
+}

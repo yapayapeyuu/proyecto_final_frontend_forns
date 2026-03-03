@@ -1,5 +1,4 @@
-/* 
-export const contactsData = [
+const contacts = [
     {
         PhoneNumber: '+54 1131542489',
         name: 'Iris',
@@ -46,11 +45,11 @@ export const contactsData = [
         //statusVideo: '/statusVideo/hathi_storie.mp4',
         statusVideo: '',
         age: 7,
-        lastMsg: 'Durmiendo',
+        lastMsg: '¿Qué puedo romper hoy? ',
         avatar: "/Imagenes/nala.jpeg"
     },
     {
-        PhoneNumber: '1+54 1131542485',
+        PhoneNumber: '+54 1131542485',
         name: 'Rem',
         statusVideo: '/statusVideo/tute_storie.mp4',
         age: 1,
@@ -60,4 +59,4 @@ export const contactsData = [
    
 ]
 
- */
+export default contacts;

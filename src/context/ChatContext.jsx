@@ -1,6 +1,6 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+/* import React, { createContext, useState, useContext, useEffect } from 'react';
 import { formatTime, getBotResponse } from '../utils/constants';
-import { contactsData } from '../data/contacts.Data.jsx';
+import { contactsData } from '../data/contactsData.js';
 import { initialMessages } from "../data/initialMessages";
 import { useNavigate } from "react-router-dom";
 
@@ -121,6 +121,394 @@ export const ChatProvider = ({ children }) => {
             {children}
         </ChatContext.Provider>
     );
+};
+
+export const useChat = () => useContext(ChatContext); */
+/* 
+import { createContext, useContext, useState } from "react";
+import { getContacts } from "../services/service";
+
+
+const ChatContext = createContext();
+
+export const ChatProvider = ({ children }) => {
+
+  const contacts = getContacts();
+
+  const [messages, setMessages] = useState({});
+
+  const [activeChat, setActiveChat] = useState(null);
+
+  const userName = "Yo";
+
+  const sendMessage = (phone, text) => {
+
+    const newMessage = {
+      id: Date.now(),
+      author: userName,
+      text,
+      time: new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit"
+      }),
+      status: "sent"
+    };
+
+    setMessages(prev => ({
+      ...prev,
+      [phone]: [...(prev[phone] || []), newMessage]
+    }));
+  };
+
+  const openStatus = (video) => {
+    console.log("abrir status", video);
+  };
+
+  return (
+    <ChatContext.Provider
+      value={{
+        contacts,
+        messages,
+        sendMessage,
+        userName,
+        activeChat,
+        setActiveChat,
+        openStatus
+      }}
+    >
+      {children}
+    </ChatContext.Provider>
+  );
+};
+
+export const useChat = () => useContext(ChatContext); */
+
+/* import { createContext, useContext, useState } from "react";
+import { getContacts } from "../services/services";
+//import { getContacts } from "../services/services";
+
+const ChatContext = createContext();
+
+export function ChatProvider({ children }) {
+
+  const contacts = getContacts();
+
+  const [messages, setMessages] = useState({});
+
+  const sendMessage = (phone, text) => {
+
+    const newMessage = {
+      id: Date.now(),
+      author: "Yo",
+      text,
+      time: new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit"
+      }),
+      status: "sent"
+    };
+
+    setMessages(prev => ({
+      ...prev,
+      [phone]: [...(prev[phone] || []), newMessage]
+    }));
+  };
+
+  return (
+    <ChatContext.Provider
+      value={{
+        contacts,
+        messages,
+        sendMessage
+      }}
+    >
+      {children}
+    </ChatContext.Provider>
+  );
+}
+
+export const useChat = () => useContext(ChatContext); */
+
+/* import { createContext, useContext, useState } from "react";
+
+const ChatContext = createContext();
+
+export const useChat = () => useContext(ChatContext);
+
+export default function ChatProvider({ children }) {
+
+  const [messages, setMessages] = useState({});
+
+  const sendMessage = (phone, text) => {
+
+    setMessages(prev => ({
+      ...prev,
+      [phone]: [
+        ...(prev[phone] || []),
+        {
+          id: Date.now(),
+          text,
+          author: "me"
+        }
+      ]
+    }));
+  };
+
+  return (
+    <ChatContext.Provider value={{ messages, sendMessage }}>
+      {children}
+    </ChatContext.Provider>
+  );
+} *//* 
+
+  import { createContext, useContext, useState } from "react";
+
+const ChatContext = createContext();
+
+export const useChat = () => useContext(ChatContext);
+
+export default function ChatProvider({ children }) {
+
+  const [userName, setUserName] = useState(
+    localStorage.getItem("chat_user") || ""
+  );
+
+  const [messages, setMessages] = useState({});
+
+  const sendMessage = (phone, text) => {
+    setMessages(prev => ({
+      ...prev,
+      [phone]: [
+        ...(prev[phone] || []),
+        {
+          id: Date.now(),
+          text,
+          author: userName
+        }
+      ]
+    }));
+  };
+
+  const value = {
+    userName,
+    setUserName, // ✅ ESTO FALTABA
+    messages,
+    sendMessage
+  };
+
+  return (
+    <ChatContext.Provider value={value}>
+      {children}
+    </ChatContext.Provider>
+  );
+} */
+
+ /*  import { createContext, useContext, useState, useMemo } from "react";
+
+const ChatContext = createContext();
+
+export const ChatProvider = ({ children }) => {
+
+  const [activeChat, setActiveChat] = useState(null);
+  const [messages, setMessages] = useState({});
+
+  const sendMessage = (phone, text) => {
+
+    const newMessage = {
+      id: Date.now(),
+      text,
+      author: "me",
+      time: new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit"
+      })
+    };
+
+    setMessages(prev => ({
+      ...prev,
+      [phone]: [...(prev[phone] || []), newMessage]
+    }));
+  };
+  const value = useMemo(() => ({
+    activeChat,
+    setActiveChat,
+    messages,
+    sendMessage
+  }), [activeChat, messages]);
+
+  return (
+    <ChatContext.Provider value={value}>
+      {children}
+    </ChatContext.Provider>
+  );
+};
+
+export const useChat = () => useContext(ChatContext); */
+
+/* import { createContext, useContext, useState } from "react";
+
+// 1️⃣ Crear contexto
+export const ContactsContext = createContext({
+  contacts: [],
+  favorite_name: ""
+});
+
+// 2️⃣ Provider
+const ContactsContextProvider = ({ children }) => {
+  const [contacts, setContacts] = useState([]);
+  const [favorite_name, setFavoriteName] = useState("");
+
+  const value = {
+    contacts,
+    setContacts,
+    favorite_name,
+    setFavoriteName
+  };
+
+  return (
+    <ContactsContext.Provider value={value}>
+      {children}
+    </ContactsContext.Provider>
+  );
+};
+
+// 3️⃣ CUSTOM HOOK (🔥 ESTE FALTABA)
+export const useContacts = () => {
+  return useContext(ContactsContext);
+};
+
+export default ContactsContextProvider; */
+
+/* import { createContext, useContext, useState, useMemo } from "react";
+
+/* =========================
+   CONTEXT
+========================= *//*
+
+export const ChatContext = createContext();*/
+
+/* =========================
+   PROVIDER
+========================= *//*
+
+const ChatProvider = ({ children }) => {
+
+  const [activeChat, setActiveChat] = useState(null);
+  const [messages, setMessages] = useState({});
+
+  // datos de usuario (porque IconSidebar los usa)
+  const [userName, setUserName] = useState("");
+  const [userAvatar, setUserAvatar] = useState(null);
+
+  const logout = () => {
+    setUserName("");
+    setUserAvatar(null);
+    setActiveChat(null);
+  };
+
+  const sendMessage = (phone, text) => {
+
+    const newMessage = {
+      id: Date.now(),
+      text,
+      author: "me",
+      time: new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit"
+      })
+    };
+
+    setMessages(prev => ({
+      ...prev,
+      [phone]: [...(prev[phone] || []), newMessage]
+    }));
+  };*/
+
+  /* 🔥 evita re-render global *//*
+  const value = useMemo(() => ({
+    activeChat,
+    setActiveChat,
+    messages,
+    sendMessage,
+    userName,
+    setUserName,
+    userAvatar,
+    setUserAvatar,
+    logout
+  }), [activeChat, messages, userName, userAvatar]);
+
+  return (
+    <ChatContext.Provider value={value}>
+      {children}
+    </ChatContext.Provider>
+  );
+};*/
+
+/* =========================
+   CUSTOM HOOK
+========================= *//*
+
+export const useChat = () => {
+  return useContext(ChatContext);
+};
+
+export default ChatProvider; */
+
+import { createContext, useContext, useState, useMemo } from "react";
+
+const ChatContext = createContext();
+
+export const ChatProvider = ({ children }) => {
+
+  const [activeChat, setActiveChat] = useState(null);
+  const [messages, setMessages] = useState({});
+
+  const [userName, setUserName] = useState(
+    localStorage.getItem("chat_user") || ""
+  );
+
+  const [userAvatar, setUserAvatar] = useState(null);
+
+  const logout = () => {
+    localStorage.removeItem("chat_user");
+    setUserName("");
+  };
+
+  const sendMessage = (phone, text) => {
+
+    const newMessage = {
+      id: Date.now(),
+      text,
+      author: userName || "me",
+      time: new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit"
+      })
+    };
+
+    setMessages(prev => ({
+      ...prev,
+      [phone]: [...(prev[phone] || []), newMessage]
+    }));
+  };
+
+  const value = useMemo(() => ({
+    activeChat,
+    setActiveChat,
+    messages,
+    sendMessage,
+    userName,
+    setUserName,
+    userAvatar,
+    setUserAvatar,
+    logout
+  }), [activeChat, messages, userName, userAvatar]);
+
+  return (
+    <ChatContext.Provider value={value}>
+      {children}
+    </ChatContext.Provider>
+  );
 };
 
 export const useChat = () => useContext(ChatContext);

@@ -1,0 +1,166 @@
+/* BLOQUE PRINCIPAL */
+/*
+.contacts {
+  width: 30%;
+  min-width: 320px;
+  background-color: #ffffff;
+  border-right: 1px solid #e9edef;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* HEADER */
+/*
+.contacts__header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  background-color: #f0f2f5;
+  border-bottom: 1px solid #e9edef;
+}
+
+.contacts__title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111b21;
+}
+
+/* LISTA */
+/*
+.contacts__list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/*  ITEM */
+/*
+.contacts__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.2s ease;
+}
+
+.contacts__item:hover {
+  background-color: #f5f6f6;
+}
+
+/*    AVATAR*/
+/*
+.contacts__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/*    INFO
+
+
+.contacts__info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.contacts__name {
+  font-size: 16px;
+  font-weight: 500;
+  color: #111b21;
+}
+
+.contacts__last-msg {
+  font-size: 14px;
+  color: #667781;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* CONTENEDOR PRINCIPAL */
+
+.contacts {
+  width: 30%;
+  min-width: 320px;
+  background-color: #ffffff;
+  border-right: 1px solid #e9edef;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* HEADER */
+
+.contacts__header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  background-color: #f0f2f5;
+  border-bottom: 1px solid #e9edef;
+}
+
+.contacts__title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111b21;
+}
+
+/* LISTA */
+
+.contacts__list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* ITEM */
+
+.contacts__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.contacts__item:hover {
+  background-color: #f5f6f6;
+}
+
+/*  AVATAR*/
+
+.contacts__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* INFO */
+
+.contacts__info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.contacts__name {
+  font-size: 16px;
+  font-weight: 500;
+  color: #111b21;
+}
+
+.contacts__last-msg {
+  font-size: 14px;
+  color: #667781;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,0 +1,43 @@
+/* .chat-layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+.icon-sidebar {
+  width: 70px;
+}
+.contact-list {
+  width: 320px;
+  border-right: 1px solid #ddd;
+} */
+
+/* BLOQUE PRINCIPAL */
+.chat-layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #f0f2f5; 
+}
+
+/* Sidebar de íconos */
+.icon-sidebar {
+  width: 70px;
+  background-color: #ffffff;
+  border-right: 1px solid #ddd;
+}
+
+/* Lista de contactos */
+.contact-list {
+  width: 320px;
+  border-right: 1px solid #ddd;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Panel derecho flexible */
+.chat-layout__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}

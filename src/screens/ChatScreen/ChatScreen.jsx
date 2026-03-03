@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import ChatWindow from '../../components/ChatWindow/ChatWindow';
 import './ChatScreen.css'
@@ -18,4 +18,4 @@ const ChatScreen = () => {
 
 
 
-export default ChatScreen;
+export default ChatScreen; */
