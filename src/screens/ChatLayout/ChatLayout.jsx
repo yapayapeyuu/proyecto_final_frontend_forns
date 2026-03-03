@@ -63,7 +63,7 @@ export default function ChatLayout() {
 
 import IconSidebar from "../../components/layoutArea/IconSidebar";
 import ContactList from "../../components/layoutArea/ContactList";
-import ChatWindow from "../../components/chat/ChatWindow";
+import ChatWindow from "../../components/chatArea/ChatWindow";
 
 import "../../styles/layout.css";
 
