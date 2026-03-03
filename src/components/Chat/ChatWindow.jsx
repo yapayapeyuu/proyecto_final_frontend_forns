@@ -490,9 +490,9 @@ export default function ChatWindow() {
 
   import { useChat } from "../../context/ChatContext";
 
-import ChatHeader from "../layout/ChatWindow/ChatHeader";
-import ChatMessages from "../layout/ChatWindow/ChatMessages";
-import ChatInput from "../layout/ChatWindow/ChatInput";
+import ChatHeader from "../layoutArea/ChatWindow/ChatHeader";
+import ChatMessages from "../layoutArea/ChatWindow/ChatMessages";
+import ChatInput from "../layoutArea/ChatWindow/ChatInput";
 import EmptyChat from "./EmptyChat"; 
 /* import ChatHeader from "./ChatHeader";
 import ChatMessages from "./ChatMessages";
