@@ -9,7 +9,7 @@ const LoginScreen = ({ onLogin }) => {
     const navigate = useNavigate();
 
     const handleLogin = (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
         localStorage.setItem('user', user);
 
         setUserName(user);

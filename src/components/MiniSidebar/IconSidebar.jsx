@@ -1,12 +1,12 @@
 import React from 'react';
 import { useChat } from '../../context/ChatContext';
 import { useNavigate } from 'react-router-dom';
-import './MiniSidebar.css';
+import './IconSidebar.css';
 import { CiLogout } from "react-icons/ci";
 import { FaCircle } from "react-icons/fa";
 import { FaRegCircle } from "react-icons/fa6";
 
-const MiniSidebar = () => {
+const IconSidebar = () => {
     const { userName, logout, toggleTheme, theme } = useChat();
     const navigate = useNavigate();
 
@@ -49,4 +49,4 @@ const MiniSidebar = () => {
     );
 };
 
-export default MiniSidebar;
+export default IconSidebar;

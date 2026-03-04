@@ -4,6 +4,7 @@ import { useChat } from '../../context/ChatContext';
 import './ChatWindow.css';
 import EmptyChat from "../EmptyChat/EmptyChat";
 import { IoIosArrowRoundBack } from "react-icons/io";
+import { MdSend } from "react-icons/md";
 
 const ChatWindow = ({ onOpenInfo, onBack, isMobile }) => {
     const { PhoneNumber } = useParams();
@@ -45,7 +46,7 @@ const ChatWindow = ({ onOpenInfo, onBack, isMobile }) => {
         return (
             <div className="empty-chat">
                 <div className="empty-chat-content">
-                  <EmptyChat/>
+                    <EmptyChat />
                 </div>
             </div>
         );
@@ -57,7 +58,7 @@ const ChatWindow = ({ onOpenInfo, onBack, isMobile }) => {
 
                 {isMobile && (
                     <button className="back-btn" onClick={onBack}>
-                       <IoIosArrowRoundBack />
+                        <IoIosArrowRoundBack />
                     </button>
                 )}
 
@@ -109,7 +110,7 @@ const ChatWindow = ({ onOpenInfo, onBack, isMobile }) => {
                 />
 
                 <button type="submit" className="send-btn">
-                    ➜
+                    <MdSend />
                 </button>
             </form>
         </div>

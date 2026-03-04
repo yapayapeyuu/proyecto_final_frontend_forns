@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Sidebar from '../components/Sidebar/Sidebar';
-import MiniSidebar from '../components/MiniSidebar/MiniSidebar';
+import IconSidebar from '../components/MiniSidebar/IconSidebar';
 import ChatWindow from '../components/ChatWindow/ChatWindow';
 import ContactInfoPanel from '../components/ContactInfoPanel/ContactInfoPanel';
 import { useChat } from '../context/ChatContext';
+
 
 const ChatScreen = () => {
     const [showInfo, setShowInfo] = useState(false);
@@ -13,7 +14,7 @@ const ChatScreen = () => {
     const { contacts, activeChat } = useChat();
     const contact = contacts.find(c => c.PhoneNumber === activeChat);
 
-   
+
     useEffect(() => {
         const handleResize = () => {
             setIsMobile(window.innerWidth <= 768);
@@ -35,21 +36,21 @@ const ChatScreen = () => {
 
             {!isMobile && (
                 <div className="mini-sidebar-container">
-                    <MiniSidebar />
+                    <IconSidebar />
                 </div>
             )}
 
-        
+
             {(!isMobile || mobileView === "sidebar") && (
                 <div className="sidebar-container-desktop">
                     <Sidebar />
                 </div>
             )}
 
-        
+
             {(!isMobile || mobileView === "chat") && (
                 <div className="chat-container">
-                   
+
                     <ChatWindow
                         onOpenInfo={() => {
                             if (isMobile) {
@@ -64,7 +65,7 @@ const ChatScreen = () => {
                 </div>
             )}
 
- 
+
             {(!isMobile && showInfo) || (isMobile && mobileView === "info") ? (
                 <div className="info-container">
                     <ContactInfoPanel

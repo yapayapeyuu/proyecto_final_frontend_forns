@@ -6,13 +6,13 @@
 }
 
 .chat-header {
-    height: 60px; 
-    background-color:#161717;
+    height: 60px;
+    background-color: #161717;
     display: flex;
     align-items: center;
- /*    justify-content: space-between; */
+    /*    justify-content: space-between; */
     padding: 10px 16px;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.08); 
+    border-bottom: 2px solid rgba(0, 0, 0, 0.08);
     flex-shrink: 0;
 }
 
@@ -49,7 +49,7 @@
 
 .typing-text {
     font-size: 0.85rem;
-    color: #01b20a ;
+    color: #01b20a;
     font-weight: 500;
     margin: 0;
     padding: 0;
@@ -68,17 +68,17 @@
 
 .msg-bubble.me {
     align-self: flex-end;
-    background-color:#3f6964;
+    background-color: #3f6964;
     color: #020c12;
     border: 1px solid #c0e0a8;
     border-top-right-radius: 0;
 }
 
-.msg-bubble.me:hover{
+.msg-bubble.me:hover {
     background-color: rgb(87, 145, 141);
 }
 
-.msg-bubble.them:hover{
+.msg-bubble.them:hover {
     background-color: rgb(109, 201, 207);
 }
 
@@ -117,7 +117,7 @@
     font-weight: 600;
 }
 
-.error{
+.error {
     justify-content: center;
 }
 
@@ -134,7 +134,7 @@
 
 .msg-time {
     font-size: 0.75rem;
-    color:grey;
+    color: grey;
     display: block;
     text-align: right;
     margin-top: 4px;
@@ -175,43 +175,43 @@
     justify-content: flex-end;
 }
 
-button.send-btn{
-    background-color: #00a884 ;
+button.send-btn {
+    background-color: #00a884;
     padding: 15px;
 }
 
-button.send-btn:hover{
+button.send-btn:hover {
     background-color: #019373;
 }
 
 
 .empty-chat {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #0b141a;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0b141a;
 }
 
 
 .empty-chat-content {
-  text-align: center;
-  color: #8696a0;
-  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    text-align: center;
+    color: #8696a0;
+    font-family: "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
 
 .empty-chat-content h2 {
-  font-size: 32px;
-  font-weight: 300;
-  color: #e9edef;
-  margin-bottom: 10px;
+    font-size: 32px;
+    font-weight: 300;
+    color: #e9edef;
+    margin-bottom: 10px;
 }
 
 
 .empty-chat-content p {
-  font-size: 16px;
-  color: #8696a0;
+    font-size: 16px;
+    color: #8696a0;
 }
 
 .chat-window {

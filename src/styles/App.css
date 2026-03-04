@@ -1,4 +1,3 @@
-
 :root {
     --wa-green: #00a884;
     --wa-dark: #161717;
@@ -6,8 +5,8 @@
     --text-dark: #3b4a54;
     --white: #ffffff;
     --wa-border: #ddd;
-    --marroncito:  rgb(178, 159, 141);
-    --verde-oscuro:  #019373;
+    --marroncito: rgb(178, 159, 141);
+    --verde-oscuro: #019373;
 }
 
 * {
@@ -18,13 +17,13 @@
 
 body {
     font-family: sans-serif;
-    background:var(--bg-main);
+    background: var(--bg-main);
     color: var(--bg-main);
 }
 
 .contact-link.active {
     background-color: var(--bg-sidebar);
-    
+
 }
 
 
@@ -92,6 +91,7 @@ body {
     font-weight: 600;
     font-size: 20px;
 }
+
 .login-form button:hover {
     background-color: var(--verde-oscuro);
 }
@@ -105,12 +105,21 @@ body {
 }
 
 @keyframes pulse-typing {
-    0% { opacity: 1; }
-    50% { opacity: 0.5; }
-    100% { opacity: 1; }
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
+
 body.dark {
-    --bg-main:  #161717;
+    --bg-main: #161717;
     --bg-sidebar: #1D1F1F;
     --text-color: #e9edef;
 }
@@ -121,11 +130,11 @@ body.light {
     --text-color: #ffffff;
 }
 
-.main-layout > div {
+.main-layout>div {
     display: flex;
 }
 
-.main-layout > div:nth-child(3) {
+.main-layout>div:nth-child(3) {
     flex: 1;
 }
 
@@ -191,7 +200,7 @@ body.light {
         display: none;
     }
 
-    .main-layout > div {
+    .main-layout>div {
         width: 100%;
         height: 100%;
     }
@@ -201,18 +210,19 @@ body.light {
         display: none !important;
     }
 
-  .back-btn {
-    background: none;
-    border: none;
-    font-size: 22px;
-    cursor: pointer;
-    color: var(--white);
-    margin-right: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
- .sidebar-actions-mobile {
+    .back-btn {
+        background: none;
+        border: none;
+        font-size: 22px;
+        cursor: pointer;
+        color: var(--white);
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .sidebar-actions-mobile {
         display: flex;
     }
 
