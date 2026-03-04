@@ -39,16 +39,13 @@ body {
     height: 100dvh;
 }
 
-/* Mini Sidebar */
+
 .mini-sidebar-container {
     width: 70px;
     min-width: 70px;
     max-width: 70px;
 }
 
-/* =========================================
-    3. LOGIN PAGE #FDF5EB
-   ========================================= */
 
 .login-container {
     display: flex;
@@ -92,9 +89,6 @@ body {
     background-color: #019373;
 }
 
-/* =========================================
-    4. STATUS / STORIES
-   ========================================= */
 
 .user-avatar-container img {
     width: 60px;
@@ -103,20 +97,11 @@ body {
     object-fit: cover;
 }
 
-/* =========================================
-    5. CHAT WINDOW
-   ========================================= */
-
 @keyframes pulse-typing {
     0% { opacity: 1; }
     50% { opacity: 0.5; }
     100% { opacity: 1; }
 }
-
-/* =========================================
-    6. DARK / LIGHT MODE
-   ========================================= */
-
 body.dark {
     --bg-main:  #161717;
     --bg-sidebar: #1D1F1F;
@@ -129,13 +114,10 @@ body.light {
     --text-color: #020405;
 }
 
-
-/* Desktop layout fix */
 .main-layout > div {
     display: flex;
 }
 
-/* El contenedor del chat debe ocupar el espacio restante */
 .main-layout > div:nth-child(3) {
     flex: 1;
 }
@@ -150,9 +132,7 @@ body.light {
     width: 350px;
     display: flex;
 }
-/* =========================================
-    7. RESPONSIVIDAD DESKTOP
-   ========================================= */
+
 
 @media (min-width: 768px) {
 
@@ -204,28 +184,20 @@ body.light {
         overflow: hidden;
     }
 
-    /* Ocultamos mini sidebar en mobile */
     .mini-sidebar-container {
         display: none;
     }
 
-    /* Ocultamos sidebar desktop */
-/*     .sidebar-container-desktop {
-        display: none !important;
-    } */
-
-    /* Cada panel ocupa pantalla completa */
     .main-layout > div {
         width: 100%;
         height: 100%;
     }
 
-    /* Clase que controlamos desde React */
+
     .hidden-mobile {
         display: none !important;
     }
 
-    /* Botón volver visible en mobile */
   .back-btn {
     background: none;
     border: none;
