@@ -1,12 +1,13 @@
 import React from 'react';
 import './ContactInfoPanel.css';
+import { MdClose } from "react-icons/md";
 
 const ContactInfoPanel = ({ contact, onClose }) => {
   if (!contact) return null;
 
   return (
     <aside className="info-panel">
-      <button onClick={onClose}>✕</button>
+      <button onClick={onClose}><MdClose /></button>
 
       <div className="info-header">
         <img src={contact.avatar} alt={contact.name} />

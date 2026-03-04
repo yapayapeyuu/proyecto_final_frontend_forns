@@ -16,7 +16,7 @@ export const ChatProvider = ({ children }) => {
         return localStorage.getItem('user') || '';
     });
 
-    // ✅ THEME (CORRECTAMENTE DENTRO DEL COMPONENTE)
+
     const [theme, setTheme] = useState(() => {
         return localStorage.getItem('theme') || 'dark';
     });

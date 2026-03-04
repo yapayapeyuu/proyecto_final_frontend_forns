@@ -49,16 +49,7 @@ const ChatScreen = () => {
         
             {(!isMobile || mobileView === "chat") && (
                 <div className="chat-container">
-                    {/* <ChatWindow
-                        onOpenInfo={() => {
-                            if (isMobile) {
-                                setMobileView("info");
-                            } else {
-                                setShowInfo(true);
-                            }
-                        }}
-                        onBack={() => setMobileView("sidebar")}
-                    /> */}
+                   
                     <ChatWindow
                         onOpenInfo={() => {
                             if (isMobile) {

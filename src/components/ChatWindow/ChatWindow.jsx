@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useChat } from '../../context/ChatContext';
 import './ChatWindow.css';
 import EmptyChat from "../EmptyChat/EmptyChat";
+import { IoIosArrowRoundBack } from "react-icons/io";
 
 const ChatWindow = ({ onOpenInfo, onBack, isMobile }) => {
     const { PhoneNumber } = useParams();
@@ -56,7 +57,7 @@ const ChatWindow = ({ onOpenInfo, onBack, isMobile }) => {
 
                 {isMobile && (
                     <button className="back-btn" onClick={onBack}>
-                        ←
+                       <IoIosArrowRoundBack />
                     </button>
                 )}
 

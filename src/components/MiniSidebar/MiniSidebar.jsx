@@ -32,7 +32,7 @@ const MiniSidebar = () => {
                     onClick={toggleTheme}
                     title="Cambiar tema"
                 >
-                    {theme === 'dark' ? <FaRegCircle /> :  <FaCircle/> }
+                    {theme === 'dark' ? <FaCircle/>  :   <FaRegCircle />}
                 </button>
 
               
